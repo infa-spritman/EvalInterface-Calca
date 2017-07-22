@@ -1,7 +1,7 @@
-Calaca
+Bazingaaa
 =========
 
-Calaca is a beautiful, easy to use, search UI for Elasticsearch. It's made for you if you need to do quick searches for your documents and don't need anything hard to setup, use.
+Bazingaaa is a beautiful, easy to use, search UI for Elasticsearch. It's made for you if you need to do quick searches for your documents and don't need anything hard to setup, use.
   - Quick, easy and instant search
   - Looks good
   - Simple configs
@@ -9,10 +9,6 @@ Calaca is a beautiful, easy to use, search UI for Elasticsearch. It's made for y
   - Pagination
   - Lucene queries(boolean, range, etc)
   - Plugin install or stand-alone
-
-Demo
-=========
-![calaca-demo](https://s3.amazonaws.com/calaca/calaca-demo.gif "Calaca demo")
 
 Dependencies(Already included)
 ----
@@ -67,27 +63,9 @@ Common Issues
 * No 'Access-Control-Allow-Origin' header is present on the requested resource.
  * Add ```http.cors.enabled: true``` and  ```http.cors.allow-origin: "*"```  to your ```elasticsearch.yml```
 
-Version
-----
-
-1.2.1
-
-Author
-----
-
-[@rooomansanchez]
-
-Contributors 
-----
-
-[xros](https://github.com/xros)
-
 
 License
 ----
 
 MIT
 
-[romansanchez.me]:http://romansanchez.me
-[@rooomansanchez]:http://twitter.com/rooomansanchez
-[Pulse]:http://www.espulse.com
