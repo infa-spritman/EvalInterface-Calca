@@ -13,7 +13,7 @@
  * On change in search box, search() will be called, and results are bind to scope as results[]
  *
  */
-Calaca.controller('calacaCtrl', ['calacaService', '$scope', '$location', '$http', function (results, $scope, $location, $http) {
+Calaca.controller('calacaCtrl', ['calacaService', '$scope', '$location', '$http', '$sce', function (results, $scope, $location, $http, $sce ) {
 
         //Init empty array
         $scope.results = [];
@@ -90,7 +90,7 @@ Calaca.controller('calacaCtrl', ['calacaService', '$scope', '$location', '$http'
 
         $scope.postEvaluationScore = function (score, item) {
             console.log(score, item);
-            var endpoint = "http://localhost:9200/mi/document/"+  window.encodeURIComponent(item.docno)+"/_update";
+            var endpoint = "http://localhost:9200/mi/document/"+  window.encodeURIComponent(item._id)+"/_update";
 
             var query = {
                 "script" : "ctx._source.evaluate = true; ctx._source.grade ="+ score +";"

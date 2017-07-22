@@ -32,12 +32,14 @@
   <section class='results'>
     <p class='no-results' ng-show='!results.length && !loading'>No Results</p>
     <article class='result' ng-repeat='result in results track by $id(result)' ng-class="{'alert alert-success' : result.evaluate}">
-        <!--<pre class="code"> {{  result | json}}</pre>-->
-        <h4 class="form-header">{{result.title}}</h4>
+        <!--<pre class="code"> {{(result | json)}}</pre>-->
+        <h4 class="form-header" style="color: blue">{{result.title}}</h4>
         <a href={{result.url}} target="_blank">{{result.docno}}</a>
+        <!--<div ng-bind-html="result._highlight"></div>-->
+        <p style="margin-top: 10px" ng-bind-html="result._highlight"></p>
         <!--<div class="text-muted">{{result.author}}</div>-->
         <!--<p>{{result.text}}</p>-->
-        <div class="row">
+        <div class="row" style="margin-top: 10px">
             <div class="col-xs-4">
                 <button class="btn btn-default btn-md" ng-model="button.zero" ng-click="postEvaluationScore(buttons.zero, result)">0</button>
             </div>

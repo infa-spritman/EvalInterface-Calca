@@ -9,7 +9,7 @@
  */
 
 /* Service to Elasticsearch */
-Calaca.factory('calacaService', ['$q', 'esFactory', '$location', function ($q, elasticsearch, $location) {
+Calaca.factory('calacaService', ['$q', 'esFactory', '$location', '$sce', function ($q, elasticsearch, $location, $sce) {
 
         //Set default url if not configured
         CALACA_CONFIGS.url = (CALACA_CONFIGS.url.length > 0) ? CALACA_CONFIGS.url : $location.protocol() + '://' + $location.host() + ":9200";
@@ -36,6 +36,13 @@ Calaca.factory('calacaService', ['$q', 'esFactory', '$location', function ($q, e
                             "text": query
                         }
                     },
+                    "highlight": {
+                        "number_of_fragments": 2,
+                        "fragment_size": 200,
+                        "fields": {
+                            "text": {}
+                        }
+                    },
                     "sort": [
                         "_score"
                     ]
@@ -50,6 +57,7 @@ Calaca.factory('calacaService', ['$q', 'esFactory', '$location', function ($q, e
                     source._index = hitsIn[i]._index;
                     source._type = hitsIn[i]._type;
                     source._score = hitsIn[i]._score;
+                    source._highlight = $sce.trustAsHtml(hitsIn[i].highlight.text.join('...'));
                     hitsOut.push(source);
                 }
                 deferred.resolve({timeTook: result.took, hitsCount: result.hits.total, hits: hitsOut});
